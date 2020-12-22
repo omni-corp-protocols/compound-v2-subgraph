@@ -16,12 +16,7 @@ import { Market, Comptroller, Account } from '../types/schema'
 import { mantissaFactorBD, updateCommonCTokenStats, createAccount } from './helpers'
 import { createMarket } from './markets'
 
-let invalid_markets: string[] = ['0xbdf447b39d152d6a234b4c02772b8ab5d1783f72']
-
 export function handleMarketListed(event: MarketListed): void {
-  if (invalid_markets.indexOf(event.params.cToken.toHexString()) !== -1) {
-    return
-  }
   // Dynamically index all new listed tokens
   CToken.create(event.params.cToken)
   // Create the market for this token, since it's now been listed.
@@ -83,6 +78,10 @@ export function handleMarketExited(event: MarketExited): void {
 
 export function handleNewCloseFactor(event: NewCloseFactor): void {
   let comptroller = Comptroller.load('1')
+  // This is the first event used in this mapping, so we use it to create the entity
+  if (comptroller == null) {
+    comptroller = new Comptroller('1')
+  }
   comptroller.closeFactor = event.params.newCloseFactorMantissa
   comptroller.save()
 }
@@ -104,16 +103,6 @@ export function handleNewCollateralFactor(event: NewCollateralFactor): void {
 export function handleNewLiquidationIncentive(event: NewLiquidationIncentive): void {
   let comptroller = Comptroller.load('1')
   comptroller.liquidationIncentive = event.params.newLiquidationIncentiveMantissa
-  comptroller.save()
-}
-
-export function handleNewMaxAssets(event: NewMaxAssets): void {
-  let comptroller = Comptroller.load('1')
-  // This is the first event used in this mapping, so we use it to create the entity
-  if (comptroller == null) {
-    comptroller = new Comptroller('1')
-  }
-  comptroller.maxAssets = event.params.newMaxAssets
   comptroller.save()
 }
 

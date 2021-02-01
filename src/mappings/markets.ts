@@ -88,6 +88,7 @@ export function updateMarket(
 
     let tokenPrice = getTokenPrice(contractAddress, market.underlyingDecimals)
     market.underlyingPrice = tokenPrice.truncate(market.underlyingDecimals)
+    market.underlyingPriceUSD = tokenPrice.truncate(market.underlyingDecimals)
 
     market.accrualBlockNumber = contract.accrualBlockNumber().toI32()
     market.blockTimestamp = blockTimestamp

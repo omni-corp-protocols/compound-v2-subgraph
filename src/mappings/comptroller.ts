@@ -16,12 +16,12 @@ import { Market, Comptroller, Account } from '../types/schema'
 import { mantissaFactorBD, updateCommonCTokenStats, createAccount } from './helpers'
 import { createMarket } from './markets'
 
-let invalid_markets: string[] = ['0xbdf447b39d152d6a234b4c02772b8ab5d1783f72']
+// let invalid_markets: string[] = ['0xbdf447b39d152d6a234b4c02772b8ab5d1783f72']
 
 export function handleMarketListed(event: MarketListed): void {
-  if (invalid_markets.indexOf(event.params.cToken.toHexString()) !== -1) {
-    return
-  }
+  // if (invalid_markets.indexOf(event.params.cToken.toHexString()) !== -1) {
+  //   return
+  // }
   // Dynamically index all new listed tokens
   CToken.create(event.params.cToken)
   // Create the market for this token, since it's now been listed.

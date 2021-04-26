@@ -19,13 +19,13 @@ let network = dataSource.network()
 
 let cETHAddress: string =
   network == 'mainnet'
-    ? '0xd06527d5e56a3495252a528c4987003b712860ee' // mainnet
-    : '0x1ffe17b99b439be0afc831239ddecda2a790ff3a' // bsc
+    ? '0x0000000000000000000000000000000000000001' // mainnet
+    : '0x0000000000000000000000000000000000000001' // bsc
 
 let cUSDCAddress =
   network == 'mainnet'
-    ? '0x44fbebd2f576670a6c33f6fc0b00aa8c5753b322' // mainnet
-    : '0xd83c88db3a6ca4a32fff1603b0f7ddce01f5f727' // bsc
+    ? '0x0000000000000000000000000000000000000001' // mainnet
+    : '0x3a67668c43aa08294144755efc8669fef5d94709' // bsc
 
 let blocksPerYear =
   network == 'mainnet'

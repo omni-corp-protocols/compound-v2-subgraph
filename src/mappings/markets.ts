@@ -25,7 +25,7 @@ let cETHAddress: string =
 let cUSDCAddress =
   network == 'mainnet'
     ? '0x0000000000000000000000000000000000000001' // mainnet
-    : '0x3a67668c43aa08294144755efc8669fef5d94709' // bsc
+    : '0x606F53B25984D60559b21BEE6c51E2FE93137852' // bsc
 
 let blocksPerYear =
   network == 'mainnet'

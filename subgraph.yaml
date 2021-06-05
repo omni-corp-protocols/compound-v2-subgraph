@@ -1,5 +1,5 @@
 specVersion: 0.0.2
-description: OmniCOMP is a Synthetic Currency Minter Built on Binance Smart Chain.
+description: OmniCOMP V2 is a Synthetic Currency Minter Built on Binance Smart Chain.
 repository: https://github.com/omni-corp-protocols/compound-v2-subgraph
 schema:
   file: ./schema.graphql
@@ -8,9 +8,9 @@ dataSources:
     name: Comptroller
     network: bsc
     source:
-      address: "0xC001c415b7E78eA4A3edf165D8f44b70391F8c3c"
+      address: "0x0aBBAba95439dAbc12a6bA59E0713a722a05cB31"
       abi: Comptroller
-      startBlock: 5527884
+      startBlock: 7996008
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4

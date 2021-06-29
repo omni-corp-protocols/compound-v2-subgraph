@@ -16,21 +16,36 @@ import {
 } from './helpers'
 
 let network = dataSource.network()
+let cETHAddress: string
+let cUSDCAddress: string
+let blocksPerYear: string
 
-let cETHAddress: string =
-  network == 'mainnet'
-    ? '0x0000000000000000000000000000000000000001' // mainnet
-    : '0x0000000000000000000000000000000000000001' // bsc
-
-let cUSDCAddress =
-  network == 'mainnet'
-    ? '0x0000000000000000000000000000000000000001' // mainnet
-    : '0x606F53B25984D60559b21BEE6c51E2FE93137852' // bsc
-
-let blocksPerYear =
-  network == 'mainnet'
-    ? '2102400' // mainnet
-    : '10512000' // bsc
+switch (network) {
+  case 'mainnet': {
+    cETHAddress = '0x0000000000000000000000000000000000000001'
+    cUSDCAddress = '0x606F53B25984D60559b21BEE6c51E2FE93137852'
+    blocksPerYear = '2102400'
+    break
+  }
+  case 'bsc': {
+    cETHAddress = '0x0000000000000000000000000000000000000001'
+    cUSDCAddress = '0x606F53B25984D60559b21BEE6c51E2FE93137852'
+    blocksPerYear = '10512000'
+    break
+  }
+  case 'matic': {
+    cETHAddress = '0x0000000000000000000000000000000000000001'
+    cUSDCAddress = '0xb41f93d542F91D52cc7D797438534cDd05336F6C'
+    blocksPerYear = '15027429'
+    break
+  }
+  default: {
+    cETHAddress = '0x0000000000000000000000000000000000000001'
+    cUSDCAddress = '0x606F53B25984D60559b21BEE6c51E2FE93137852'
+    blocksPerYear = '10512000'
+    break
+  }
+}
 
 // Used for all cERC20 contracts
 function getTokenPrice(
